@@ -35,13 +35,13 @@ public class PlayerController : MonoBehaviour {
 //				print ("++++");
 
 				//卧槽areamask没用？？！！
-				var ss = NavMesh.SamplePosition (hit.point,out h, 1f, 3);
+				var ss = NavMesh.SamplePosition (hit.point,out h, 1f, -123321);
 //				print (NavMesh.GetSettingsCount ());
 //				var setting = NavMesh.GetSettingsByIndex (0);
 
 //				Debug.DrawLine(this.transform.position, h.position, Color.red, 100000);
-				print (h.position);
-				print (hit.point);
+//				print (h.position);
+//				print (hit.point);
 				print ("++++++samp   : " + ss);
 
 				NavMeshHit hit1;
