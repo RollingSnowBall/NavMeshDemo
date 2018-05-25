@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     public NavMeshAgent agent;
 	public Animator animator;
-	public NavMeshData data;
+//	public NavMeshData data;
 
 	private NavMeshPath path;
 
@@ -29,24 +29,28 @@ public class PlayerController : MonoBehaviour {
 				NavMeshHit h;
 
 //				var sor = new Vector3 (hit.point.x, hit.point.y, hit.point.z);
-				print(NavMesh.GetAreaCost(NavMesh.GetAreaFromName ("Walkable")));
-				print(NavMesh.GetAreaCost(NavMesh.GetAreaFromName ("TestArea")));
-				print(NavMesh.GetAreaFromName ("TestArea"));
+//				print(NavMesh.GetAreaCost(NavMesh.GetAreaFromName ("Walkable")));
+//				print(NavMesh.GetAreaCost(NavMesh.GetAreaFromName ("TestArea")));
+//				print(NavMesh.GetAreaFromName ("TestArea"));
 //				print ("++++");
 
-				var ss = NavMesh.SamplePosition (hit.point,out h, 1f, NavMesh.AllAreas);
+				//卧槽areamask没用？？！！
+				var ss = NavMesh.SamplePosition (hit.point,out h, 1f, 3);
+//				print (NavMesh.GetSettingsCount ());
+//				var setting = NavMesh.GetSettingsByIndex (0);
+
 //				Debug.DrawLine(this.transform.position, h.position, Color.red, 100000);
-//				print (h.position);
+				print (h.position);
 				print (hit.point);
 				print ("++++++samp   : " + ss);
 
 				NavMeshHit hit1;
-				if (NavMesh.FindClosestEdge (hit.point, out hit1, 123)) {
+				if (NavMesh.FindClosestEdge (hit.point, out hit1, 3213123)) {
 					DrawCircle (hit.point, hit1.distance, Color.red);
 					Debug.DrawRay (hit1.position, Vector3.up, Color.red, 10000);
 				}
-//				agent.SetDestination(hit.point);
-//				animator.SetBool ("IsRun", true);
+				agent.SetDestination(hit.point);
+				animator.SetBool ("IsRun", true);
 
 				//寻找Path
 //				NavMesh.CalculatePath(transform.position, hit.point, NavMesh.AllAreas, path);
